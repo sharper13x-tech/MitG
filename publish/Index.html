@@ -24,7 +24,7 @@
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.in { opacity: 1; transform: none; }
     @media (min-width: 481px) and (max-width: 1024px) {
-      #books-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      #books-grid, #kx-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .bottle-wrap { right: -140px; height: 95%; }
     }
     @media (max-width: 640px) {
@@ -37,6 +37,7 @@
       #books-grid { grid-template-columns: 1fr !important; }
       .btn { min-height: 44px; width: 100%; font-size: 16px; }
       #hero-copy p { font-size: 18px !important; }
+      #kx-grid { grid-template-columns: 1fr !important; }
       .card-body { font-size: 16px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -67,7 +68,7 @@
     </sc-if>
   </nav><div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px);">
 
-    <section style="position: relative; padding: clamp(40px, 6vw, 88px) 0 clamp(28px, 4vw, 56px); margin: 0 clamp(-20px, -5vw, -72px); padding-inline: clamp(20px, 5vw, 72px); overflow: hidden;">
+    <section style="position: relative; padding: clamp(40px, 6vw, 88px) 0 clamp(28px, 4vw, 56px); margin: 0 calc(-1 * clamp(20px, 5vw, 72px)); padding-inline: clamp(20px, 5vw, 72px); overflow: hidden;">
       <div class="bottle-wrap">
         <div style="position: absolute; inset: 0; background-image: url('assets/magic-bottle-right.jpg'); background-size: cover; background-position: center; filter: brightness(1.22) saturate(1.08);"></div>
         <sc-if value="{{ fxOn }}" hint-placeholder-val="{{ true }}">
@@ -167,6 +168,58 @@
       </div>
     </section>
 
+    <div style="margin: 0 calc(-1 * clamp(20px, 5vw, 72px));">
+      <img src="uploads/KX BannersPsalms.jpg" alt="Kings X Saga — I have said, Ye are gods; and all of you are children of the most High. Psalm 82:6" style="display: block; width: 100%; height: auto; min-height: 180px; object-fit: cover; object-position: left center;">
+    </div>
+
+    <section id="kingsx" style="padding: clamp(48px, 6vw, 88px) 0 clamp(32px, 5vw, 64px);">
+      <span class="tag tag-outline" style="white-space: nowrap;">Kings X Saga</span>
+      <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(26px, 3vw, 36px); margin: var(--space-4) 0 var(--space-5); color: var(--color-text);">Kings X Saga</h2>
+
+      <div id="kx-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5);">
+
+        <sc-for list="{{ kxBooks }}" as="book" hint-placeholder-count="3">
+          <div class="card elev-md {{ revealClass }}" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+            <div role="img" aria-label="{{ book.title }} cover" style="width: 100%; aspect-ratio: 2/3; background-image: url('{{ book.cover }}'); background-size: cover; background-position: center;"></div>
+            <div style="padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); flex: 1;">
+              <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                <span class="tag tag-outline">{{ book.number }}</span>
+                <sc-if value="{{ book.badge }}" hint-placeholder-val="{{ false }}">
+                  <span class="tag tag-accent">{{ book.badge }}</span>
+                </sc-if>
+              </div>
+              <h3 class="card-title" style="margin: 0;">{{ book.title }}</h3>
+              <p class="card-body" style="margin: 0; white-space: pre-line;">{{ book.blurb }}</p>
+              <sc-if value="{{ book.kindleUrl }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ book.kindleUrl }}" target="_blank" rel="noopener" class="btn btn-primary btn-block">Buy Kindle</a>
+              </sc-if>
+              <sc-if value="{{ book.paperbackUrl }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ book.paperbackUrl }}" target="_blank" rel="noopener" class="btn btn-secondary btn-block">Buy Paperback</a>
+              </sc-if>
+              <sc-if value="{{ book.hardcoverUrl }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ book.hardcoverUrl }}" target="_blank" rel="noopener" class="btn btn-secondary btn-block">Buy Hardcover</a>
+              </sc-if>
+              <sc-if value="{{ book.comingNext }}" hint-placeholder-val="{{ false }}">
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; gap: var(--space-4); margin-top: var(--space-2);">
+                  <img src="uploads/Corsair Page 1.jpg" alt="No one truly understands the exact nature of the soul." style="width: 100%; display: block; border-radius: var(--radius-sm);">
+                  <img src="uploads/Corsair Page 2.jpg" alt="There is no way to track its path from lifetime to lifetime." style="width: 100%; display: block; border-radius: var(--radius-sm);">
+                  <img src="uploads/Corsair Page 3.jpg" alt="The names we choose are like a trail of breadcrumbs." style="width: 100%; display: block; border-radius: var(--radius-sm);">
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+
+        <div class="card elev-md {{ revealClass }}" style="padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); background: color-mix(in srgb, black 95%, var(--color-accent) 5%);">
+          <h3 class="card-title" style="margin: 0;">Praise for Stephen T. Harper's Web of Souls and the Kings X Saga</h3>
+          <sc-for list="{{ kxReviews }}" as="review" hint-placeholder-count="4">
+            <p style="margin: 0; font-size: 13px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 80%, transparent);">“{{ review.quote }}” <span style="color: var(--color-accent-300); display: block; margin-top: 4px;">— {{ review.source }}</span></p>
+          </sc-for>
+        </div>
+
+      </div>
+    </section>
+
     <hr class="hr" style="border: 0; height: 1px; margin: 0; background: linear-gradient(to right, transparent, var(--color-neutral-700) 48px calc(100% - 48px), transparent);">
 
     <footer style="padding: var(--space-6) 0; font-size: 13px; color: color-mix(in srgb, var(--color-text) 55%, transparent); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-3);">
@@ -195,10 +248,14 @@ class Component extends DCLogic {
     observe();
     this._t1 = setTimeout(observe, 600);
     this._t2 = setTimeout(observe, 2000);
+    this._t3 = setTimeout(observe, 5000);
+    this._mo = new MutationObserver(() => observe());
+    this._mo.observe(document.body, { childList: true, subtree: true });
   }
   componentWillUnmount() {
     if (this._io) this._io.disconnect();
-    clearTimeout(this._t1); clearTimeout(this._t2);
+    clearTimeout(this._t1); clearTimeout(this._t2); clearTimeout(this._t3);
+    if (this._mo) this._mo.disconnect();
   }
   renderVals() {
     const books = [
@@ -237,8 +294,53 @@ class Component extends DCLogic {
         releaseDate: 'September 2026',
       },
     ];
+    const kxBooks = [
+      {
+        number: 'Book One',
+        title: 'Web of Souls',
+        cover: 'uploads/Web-of-Souls-Cover.jpg',
+        blurb: "Most of us will never remember even one past lifetime. Molly remembers them all and wishes more than anything that she could forget. Every lesson learned, every skill mastered, every choice, every sacrifice, betrayal, hope, fear... every love, every hate, every life and every death.\n\nLos Angeles detective Wendell Book is the last hope for Molly, a terrified girl who believes memories of previous lifetimes and a mysterious ring she calls the King's X have brought a killer from her distant past to her trail.",
+        kindleUrl: 'https://www.amazon.com/dp/B005R82BOI',
+        paperbackUrl: 'https://www.amazon.com/dp/B09PMKNDK5',
+        hardcoverUrl: 'https://www.amazon.com/dp/B09PMFYC2G',
+        comingNext: false,
+      },
+      {
+        number: 'Book Two',
+        title: 'Corsair',
+        cover: 'uploads/Corsair Cover.jpg',
+        blurb: "Sean Dedalus is the world's greatest thief.\nLong ago, he discovered a secret.\nWe all die... and we all come back, again and again.\nMost of us do not remember our past lives.\nSean Dedalus can't forget his.\nWhen enemies from his distant past return to re-ignite an ancient mystery, suddenly everybody wants Sean Dedalus dead... Again.",
+        kindleUrl: 'https://www.amazon.com/dp/B07282DJVB',
+        paperbackUrl: 'https://www.amazon.com/dp/1521225028',
+        hardcoverUrl: 'https://www.amazon.com/dp/B09PMLDBFS',
+        comingNext: false,
+      },
+      {
+        number: 'Book Three',
+        title: 'Black Sheep Souls',
+        cover: 'uploads/BlackSheepCover.jpg',
+        badge: 'Coming Soon',
+        blurb: 'Old souls return, new lives collide, the chase continues, and what began for them in long ago… concludes.',
+        kindleUrl: null,
+        paperbackUrl: null,
+        hardcoverUrl: null,
+        comingNext: true,
+      },
+    ];
+    const kxReviews = [
+      { quote: "Has it all! Terrific mixed genre... it's a full-meal-deal... completely engaging from beginning to end.", source: 'NY Times and USA TODAY Bestselling Author, Tamara Rose Blodgett' },
+      { quote: '...belongs to that rare breed of books whose seemingly high-concept premise shields a tightly crafted and deeply affecting story. Harper expertly balances character and conspiracy in a universe that will grab you from the very first chapter.', source: 'Line Zero Magazine' },
+      { quote: "..like a modern, real-world twist on Tolkien's Lord of the Rings. It takes the previous ages of the earth notion... cuts away all the fantasy stuff and very convincingly brings the ring into our world. To Los Angeles, in fact.", source: 'Amazon Reader Review' },
+      { quote: 'This is a \u2018stand up and take notice\u2019 story from a truly gifted writer. The most original adventure I\u2019ve seen in years. "The Matrix" crossed with "The Da Vinci Code." Web of Souls is dark, beautiful, and very provocative. I\u2019ve had the story stuck in my head since the first time I read it.', source: 'Ken Miller, Film and TV Producer' },
+      { quote: 'Stephen T. Harper is a master of words. I stayed awake all night to finish, heart pounding, eyes bulging with every new twist, and the ending almost killed me!', source: 'The Paperback Pursuer' },
+      { quote: "This is a very well-thought-out book with lots of suspense, twists, and history. I give it 5 stars. If you love a good suspense/thriller, you'll love this book!", source: 'Paranormal Opinion' },
+      { quote: "This book has grabbed me. ...really well written and I liked the author's style. Big thumbs up!", source: 'Booked Up' },
+      { quote: "...starts out mid-action and doesn't seem to slow down even when the author is describing delicate women in quiet moments with the men they care for... You won't be sorry.", source: 'Into The Morning Reads' },
+    ];
     return {
       books,
+      kxBooks,
+      kxReviews,
       menuOpen: this.state.menuOpen,
       fxOn: this.props.fireAnimation ?? true,
       sparksOn: this.props.sparks ?? true,
