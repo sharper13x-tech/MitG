@@ -123,7 +123,7 @@
         <sc-for list="{{ books }}" as="book" hint-placeholder-count="3">
           <div class="card elev-md {{ revealClass }}" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
             <sc-if value="{{ book.cover }}" hint-placeholder-val="{{ false }}">
-              <div role="img" aria-label="{{ book.title }} cover" style="width: 100%; aspect-ratio: 1715/2560; background-image: url('{{ book.cover }}'); background-size: cover; background-position: center;"></div>
+              <div role="img" aria-label="{{ book.title }} cover" style="width: 95%; margin: 2.5% auto 0; aspect-ratio: 1715/2560; background-image: url('{{ book.cover }}'); background-size: cover; background-position: center; border-radius: var(--radius-sm);"></div>
             </sc-if>
             <div style="padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); flex: 1;">
               <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
@@ -180,7 +180,7 @@
 
         <sc-for list="{{ kxBooks }}" as="book" hint-placeholder-count="3">
           <div class="card elev-md {{ revealClass }}" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
-            <div role="img" aria-label="{{ book.title }} cover" style="width: 100%; aspect-ratio: 2/3; background-image: url('{{ book.cover }}'); background-size: cover; background-position: center;"></div>
+            <div role="img" aria-label="{{ book.title }} cover" style="width: 95%; margin: 2.5% auto 0; aspect-ratio: 2/3; background-image: url('{{ book.cover }}'); background-size: cover; background-position: center; border-radius: var(--radius-sm);"></div>
             <div style="padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); flex: 1;">
               <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
                 <span class="tag tag-outline">{{ book.number }}</span>
@@ -262,7 +262,7 @@ class Component extends DCLogic {
       {
         number: 'Book One',
         title: 'Rise of the Ghoul King',
-        cover: 'assets/book1-ghoul-king.jpg',
+        cover: 'uploads/Rise Photo A.jpg',
         amazonUrl: 'https://www.amazon.com/dp/1936612070',
         blurb: 'Pursued across the Eternal Sea by the Ghoul King, an ancient and very magical ship arrives in the town graveyard. And then things really start to get weird.',
         url: 'https://www.amazon.com/dp/B0B3W7YYF5',
@@ -274,7 +274,7 @@ class Component extends DCLogic {
       {
         number: 'Book Two',
         title: 'Sailor on the Eternal Sea',
-        cover: 'assets/book2-sailor-sea.jpg',
+        cover: 'uploads/Sailor Photo A.jpg',
         amazonUrl: 'https://www.amazon.com/dp/B0CSWDL2D9',
         blurb: 'Alone aboard a temperamental ship — the ancient, very rude, and very magical vahat, Nauka — Jenny and Jed must take their first voyage on the Eternal Sea. To save their family and friends, they will face terrifying monsters, find new allies, and journey with the mighty vahat to an impossible realm where even greater secrets hide among the leaves of the Tree at the Center of All Things.',
         url: 'https://www.amazon.com/dp/B0CSQBZ2WX',
@@ -286,7 +286,7 @@ class Component extends DCLogic {
       {
         number: 'Book Three',
         title: 'The Unseen Lands',
-        cover: 'assets/book3-unseen-lands.jpg',
+        cover: 'uploads/Unseen Lands Photo A.jpg',
         blurb: 'It is a strange thing to slip through a hole in the world. Sometimes it can feel like flying, like getting swept into the sky on enchanted winds. But other times, depending on where your particular hole in the world leads, it feels like falling. For a very long time. Through a terrible storm. At night.',
         url: null,
         badge: 'Coming Soon',
